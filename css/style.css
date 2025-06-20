@@ -1,0 +1,14 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  margin: 2em;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+.profile-img {
+  width: 150px;
+  border-radius: 50%;
+}
