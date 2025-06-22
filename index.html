@@ -1,26 +1,526 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Saifur Rahman</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shekh. Md. Saifur Rahman</title>
+  <style>
+    /* ===================== BASE STYLES ===================== */
+    :root {
+      --accent: #0366d6;
+      --bg: #ffffff;
+      --fg: #111111;
+      --link-hover: #0554b3;
+    }
+    body.dark {
+      --bg: #111111;
+      --fg: #e6e6e6;
+      --accent: #0a84ff;
+      --link-hover: #60a5fa;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 980px;
+      padding: 2rem 1rem 5rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      line-height: 1.65;
+      background: var(--bg);
+      color: var(--fg);
+      transition: background 0.3s, color 0.3s;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+    h1, h2 {
+      margin: 0 0 0.45rem 0;
+    }
+    section {
+      margin-top: 3rem;
+    }
+    section h2 {
+      font-size: 1.45rem;
+      font-weight: 600;
+      border-bottom: 2px solid #eaecef;
+      padding-bottom: 0.25rem;
+    }
+
+    
+
+    /* ===================== HERO ===================== */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-text {
+      flex: 1 1 320px;
+      min-width: 260px;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .hero p {
+      margin: 0.5rem 0 0 0;
+    }
+    .hero-img {
+      flex: 0 0 260px;
+      display: flex;
+      justify-content: center;
+    }
+    .avatar {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #eaecef;
+    }
+
+    /* ===================== SOCIAL + NAV ===================== */
+    .link-bar {
+      margin-top: 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      justify-content: center;
+    }
+    .link-bar a {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+    }
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+    nav.main-nav {
+      margin-top: 2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.3rem;
+      text-align: left;
+      max-width: 700px;
+      position: relative;
+      overflow: hidden;
+    }
+    nav.main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    nav.main-nav li {
+      position: relative;
+      padding-bottom: 0.2rem;
+      cursor: pointer;
+    }
+    nav.main-nav li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 0.4rem;
+    }
+    
+    nav.main-nav a {
+      color: var(--fg);
+      text-decoration: none;
+      padding-bottom: 0.15rem;
+      display: inline-block;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      border-bottom: 3px solid transparent;
+    }
+    nav.main-nav a:hover,
+    nav.main-nav a:focus {
+      color: var(--accent);
+      border-bottom: 3px solid var(--accent);
+      text-decoration: none;
+    }
+    section {
+      margin-top: 3rem;
+      padding: 1.5rem 1.5rem 2rem;
+      border: 1px solid #eaecef;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      background: var(--bg);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark section {
+      border-color: #333;
+      box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+    }
+    @media (max-width: 650px) {
+      .hero-text {
+        text-align: center;
+      }
+    }
+    .link-bar a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+    .paper-btn {
+        display: inline-block;
+        margin-top: 0.3rem;
+        padding: 0.3rem 0.75rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #fff;
+        background-color: var(--accent);
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+    .paper-btn:hover {
+      background-color: var(--link-hover);
+      text-decoration: none;
+    }
+
+    /* ===================== LISTS ===================== */
+    .news-year, .pub-year, .exp-year { font-weight: 600; margin-top: 1rem; }
+    .news-list, .pub-list, .proj-list, .exp-list, .teach-list, .award-list, .skill-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .news-list li,
+    .exp-list li,
+    .teach-list li,
+    .award-list li {
+      margin-left: 1rem;
+      text-indent: -1rem;
+      margin-bottom: 0.3rem;
+    }
+    .pub-list li, .proj-list li { margin-bottom: 0.6rem; }
+
+    /* ===================== DARK MODE TOGGLE ===================== */
+    #darkToggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 80px;
+      right: 2px;
+      display: none;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 70px;
+      padding: 0.5rem 1rem;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+      transition: background 0.3s;
+      z-index: 1000;
+    }
+
+    #backToTop:hover {
+      background: var(--link-hover);
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      margin-top: 5rem;
+      border-top: 1px solid #eaecef;
+      padding-top: 1.2rem;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 650px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-text { align-items: center; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <img src="images/profile.jpg" alt="Profile" class="profile-img">
-    <h1>Saifur Rahman</h1>
-    <p>Lecturer | MSc Student | Researcher</p>
+  <!-- ========== DARK MODE TOGGLE ========== -->
+  <button id="darkToggle" title="Toggle dark mode">🌙</button>
 
-    <h2>About Me</h2>
-    <p>Brief bio paragraph...</p>
+  <!-- ========== HERO SECTION ========== -->
+  <header class="hero" id="home">
+    <div class="hero-text">
+      <h1>Shekh.&nbsp;Md. Saifur&nbsp;Rahman</h1>
+      
+      <p>Hi, I’m Shekh. Md. Saifur Rahman. I work as a Lecturer in the Department of CSE at United International University (UIU). Previously, I served as a Lecturer at the Military Institute of Science and Technology (MIST).</p>
 
-    <h2>Publications</h2>
+      <p>My research interests lie in robotics and intelligent systems, with overlapping areas in AI, computer vision, and embedded technologies. I enjoy exploring how these domains converge in real-world applications such as autonomous navigation, human–robot interaction, and assistive systems.</p>
+
+      <p>At UIU, I mentor the student underwater robotics team, UIU MARINER, which qualified for the MATE ROV Competition. I’m also involved in open-source initiatives focused on IoT and embedded system development.</p>
+
+      <p>Currently, I’m preparing to apply for a Ph.D. to continue research that bridges AI and robotics in meaningful, human-centered ways.</p>
+
+      <!-- ===== SOCIAL LINKS ===== -->
+      <div class="link-bar">
+        <a href="mailto:saifurrahman1701@gmail.com">Email</a> / 
+        <a href="CV_Shekh_Md_Saifur_Rahman.pdf" target="_blank">CV</a> / 
+        <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank">Google Scholar</a> / 
+        <a href="https://github.com/saifurrahman1701" target="_blank">GitHub</a> / 
+        <a href="https://www.linkedin.com/in/saifurrahman2384" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="hero-img">
+      <img src="images/profile.jpg" alt="Portrait of Shekh Md. Saifur Rahman" class="avatar" />
+    </div>
+  </header>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="main-nav">
     <ul>
-      <li><b>Title:</b> Evaluating Educational Games... <i>(WIECONECE 2024)</i></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Professional Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
+    </ul>
+  </nav>
+
+
+
+  <!-- ========== NEWS ========== -->
+   
+  <section id="news">
+    <h2>News</h2>
+    <details open>
+      <summary class="news-year">2025</summary>
+      <ul class="news-list">
+        <li><strong>Jun 2025</strong> — UIU MARINER participated in the <em>MATE ROV World Championship 2025</em> (Pioneer Class).</li>
+        <li><strong>Jun 2025</strong> — Our paper was conditionally accepted for presentation at <em>IEEE QPAIN 2025</em>.</li>
+        <li><strong>Jun 2025</strong> — A paper was published in the 2025 IEEE International Conference on <em>ECCE</em>.</li>
+        <li><strong>May 2025</strong> — UIU MARINER qualified for the <em>MATE ROV World Championship</em>.</li>
+        <li><strong>Apr 2025</strong> — Joined the <em>NetIoT</em> open‑source initiative.</li>
+        <li><strong>Feb 2025</strong> — Took on the role of mentor for the <em>UIU Advanced Underwater Robotics & Automation Crew</em>.</li>
+        <li><strong>Feb 2025</strong> — Submitted a paper to <em>Neural Computing & Applications</em>.</li>
+      </ul>
+    </details>
+    <details>
+      <summary class="news-year">2024</summary>
+      <ul class="news-list">
+        <li><strong>Oct 2024</strong> — Joined as a Lecturer at United International University (UIU).</li>
+        <li><strong>Oct 2024</strong> — Left the Lecturer position at the Military Institute of Science and Technology (MIST).</li>
+        <li><strong>Apr 2024</strong> — Joined as a Lecturer at the Military Institute of Science and Technology (MIST).</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ========== PUBLICATIONS ========== -->
+  <section id="publications">
+  <h2>Publications</h2>
+
+    <div class="pub-year">Journal</div>
+    <ul class="pub-list">
+      <li>
+        <strong>Rahman, S.M.S.</strong>, Fahmida, N.N., Khan, E.A., Zerin, S.N., Tabassum, N. and Sharmin, N., 2025.
+        PersiDani Fusion: Investigating Jamdani and Persian Motif Fusion through Image Processing, Transfer Learning, and GAN.
+        In <em>Neural Computing & Applications</em> (Manuscript submitted).<br>
+        <a href="Jamdani_GAN.pdf" class="download-btn" target="_blank">Download Manuscript</a>
+      </li>
     </ul>
 
-    <h2>Contact</h2>
-    <p>Email: saifur@example.com</p>
-  </div>
+    <div class="pub-year">Conference</div>
+    <ul class="pub-list">
+      <li>
+        Zerin, M., <strong>Rahman, S.M.S.</strong>, Fahmida, N.N., Zerin, S.N. and Islam, M.N., 2025, February.
+        Evaluating and Developing Educational Gaming Applications to Raise Awareness of Child Sexual Abuse.
+        In <em>2025 International Conference on Electrical, Computer and Communication Engineering (ECCE)</em> (pp.1–6). IEEE<br>
+        <a href="HCI_Paper.pdf" class="download-btn" target="_blank">Download Manuscript</a>
+      </li>
+      <li>
+        Bilwal, M., Tanvin, J.U., <strong>Rahman, S.M.S.</strong>, Faisal, M.R.F., Khan, A.F., Arafat, S.E. and Akhtaruzzaman, M., 2025.
+        A Multi-Modal Assistive Robot Navigation System for Physically Impaired Users.
+        In <em>2025 IEEE International Conference on Quantum Photonics, Artificial Intelligence, and Networking (ICQPAIN)</em> (Manuscript accepted for presentation).<br>
+        <a href="Mobile_Robot_Motion.pdf" class="download-btn" target="_blank">Download Manuscript</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ========== EXPERIENCE ========== -->
+  <section id="experience">
+    <h2>Professional Experience</h2>
+    <ul class="exp-list">
+      <li><span class="exp-year">Oct 2024–Present</span> — Lecturer, Department of CSE, United International University, Dhaka, Bangladesh.</li>
+      <li><span class="exp-year">Feb 2025–Present</span> — Team Mentor, UIU Advanced Underwater Robotics & Automation Crew, UIU, Dhaka, Bangladesh</li>
+      <li><span class="exp-year">Apr 2024–Oct 2024</span> — Lecturer, Department of CSE, Military Institute of Science and Technology, Dhaka, Bangladesh.</li>
+      <li><span class="exp-year">Jan 2023–Feb 2023</span> — Software Engineer Intern, IT Division, Trust Bank PLC., Dhaka, Bangladesh.</li>
+    </ul>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul class="proj-list">
+      <li><strong>UIU MARINER</strong> — Underwater ROV for MATE ROV World Championship 2025 (Mentor).</li>
+      <li><strong>PersiDani Fusion</strong> — Image processing and GANs for textile motif fusion.</li>
+      <li><strong>Assistive Robot Navigation</strong> — Multi-modal system for physically impaired users.</li>
+    </ul>
+  </section>
+
+  <!-- ========== AWARDS ========== -->
+ <section id="awards">
+  <h2>Awards & Honors</h2>
+
+  <details open>
+    <summary class="news-year">2020-2024</summary>
+    <ul>
+      <li>Received the <em>Commandant’s List of Honour</em> at MIST for achieving GPA ≥ 3.80 in all academic years.</li>
+      <li>Included in the <em>Dean’s List of Honour</em> at MIST for maintaining GPA ≥ 3.70 throughout undergraduate studies.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary class="news-year">2023</summary>
+    <ul>
+      <li>Champion in the <em>Independence Day Programming Contest (IDPC)</em> at MIST.</li>
+      <li>5th place in the <em>Anatolian Rover Challenge</em>, organized by Space Exploration Society (UKET), Türkiye.</li>
+      <li>44th place in the <em>SUST Inter-University Programming Contest (IUPC)</em>, hosted by SUST, Sylhet.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary class="news-year">2022</summary>
+    <ul>
+      <li>2nd Runner-up in the <em>Anatolian Rover Challenge</em>, organized by Space Exploration Society (UKET), Türkiye.</li>
+      <li>43rd place in the <em>ICPC Asia Dhaka Regional Contest</em>, Dhaka site.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary class="news-year">2021</summary>
+    <ul>
+      <li>Champion in the <em>University Rover Challenge (URC)</em>, organized by The Mars Society, USA.</li>
+    </ul>
+  </details>
+</section>
+
+<section id="projects">
+  <h2>Selected Projects</h2>
+
+  <ul class="proj-list">
+
+    <li>
+      <strong>NextGen Wheelchair</strong><br />
+      <small><em>Technology:</em> Machine Learning, Image Processing, Python, Arduino, JavaScript, IoT</small><br />
+      <small><em>Sep 2022 – Jun 2023</em></small><br />
+      <a href="https://youtu.be/BgpGymms6A8" target="_blank" class="paper-btn" style="margin-right: 0.5rem;">Video</a>
+      <a href="https://github.com/saifurrahman1701/NextGenWheelchair" target="_blank" class="paper-btn">GitHub</a>
+      <ul>
+        <li>Engineered an IoT-enabled, multi-modal wheelchair system integrating real-time visual processing and sensor-based control for remote navigation, aimed at enhancing mobility for physically impaired users.</li>
+        <li>The project focused on adaptive control logic and usability in constrained environments.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Heatmap Generation from Feet Pressure</strong><br />
+      <small><em>Technology:</em> Python, Arduino, Pressure Sensors, IoT</small><br />
+      <small><em>Dec 2022 – Feb 2023</em></small><br />
+      <a href="https://github.com/saifurrahman1701/Heatmap-Generation-from-Feet-Pressure" target="_blank" class="paper-btn">GitHub</a>
+      <ul>
+        <li>Designed a wearable IoT system using pressure sensors to capture plantar pressure distribution and generate dynamic heatmaps.</li>
+        <li>The project aimed to support gait analysis and orthopedic assessment, with potential use in fall detection and rehabilitation monitoring.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Bangla Book Recommendation System</strong><br />
+      <small><em>Technology:</em> Python, Pandas, NumPy, Scikit-learn</small><br />
+      <small><em>Mar 2023 – Oct 2023</em></small>
+      <ul>
+        <li>Designed and implemented a collaborative filtering–based recommendation system tailored for Bangla literature readers, using anonymized user preference data.</li>
+        <li>Explored user similarity metrics and evaluated system performance on a sparse dataset.</li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>Educational Gaming for CSA Awareness <em>(Research Publication)</em></strong><br />
+      <small><em>Technology:</em> Usability Evaluation, Heuristic Evaluation, SUS</small><br />
+      <small><em>Mar 2023 – Feb 2025</em></small><br />
+      <a href="https://ieeexplore.ieee.org/document/11013992" target="_blank" class="paper-btn">IEEE Paper</a>
+      <ul>
+        <li>Co-authored a research project accepted at ECCE 2025, involving the design and development of a Bengali storytelling game aimed at educating children about child sexual abuse (CSA) through interactive scenarios.</li>
+        <li>Conducted heuristic evaluations and System Usability Scale (SUS) assessments to validate its effectiveness and usability.</li>
+      </ul>
+    </li>
+
+  </ul>
+</section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+  This website is open source. View the code on <a href="https://github.com/saifurrahman1701/saifurrahman1701.github.io" target="_blank">GitHub</a>.
+</footer>
+
+  <!-- ========== DARK MODE SCRIPT ========== -->
+  <script>
+    const toggleBtn = document.getElementById('darkToggle');
+    const body = document.body;
+
+    // Load theme from localStorage if available
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark');
+      toggleBtn.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      if (body.classList.contains('dark')) {
+        toggleBtn.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        toggleBtn.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <button id="backToTop" title="Back to top">↑</button>
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {  // Show button after scrolling 300px
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
+
 </html>
